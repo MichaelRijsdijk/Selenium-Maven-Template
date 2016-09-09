@@ -13,13 +13,13 @@ import static com.lazerycode.selenium.config.DriverType.FIREFOX;
 import static com.lazerycode.selenium.config.DriverType.valueOf;
 import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 
-public class WebDriverThread {
+public class DriverFactory {
 
     private WebDriver webdriver;
     private DriverType selectedDriverType;
 
     private final DriverType defaultDriverType = FIREFOX;
-    private final String browser = System.getProperty("browser").toUpperCase();
+    private final String browser = System.getProperty("browser", defaultDriverType.toString()).toUpperCase();
     private final String operatingSystem = System.getProperty("os.name").toUpperCase();
     private final String systemArchitecture = System.getProperty("os.arch");
     private final boolean useRemoteWebDriver = Boolean.getBoolean("remoteDriver");
